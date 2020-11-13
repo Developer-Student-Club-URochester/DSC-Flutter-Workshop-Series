@@ -8,7 +8,14 @@ void main() {
   runApp(MyApp());
 }
 ```
-Below this method, MyApp() is defined as a Stateless Widget and the build method is overriden to return a MaterialApp(). 
+Below this method, MyApp() is defined as a Stateless Widget and the build method is overriden to return a MaterialApp().
+```
+class MyApp extends StatelessWidget {
+  @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+      ...
+```
 MyApp() is the root Widget of the application. In Flutter, almost everything is a Widget.
 
 ## Scaffold Widget
