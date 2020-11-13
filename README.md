@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       title: 'Title of Application',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Displayed Title'),
+          title: Text('AppBar Title'),
         ),
       ),
     );
