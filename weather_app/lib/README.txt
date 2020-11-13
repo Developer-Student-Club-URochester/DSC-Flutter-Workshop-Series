@@ -1,4 +1,7 @@
-use flutter -t lib/weather_main.dart to use a different target
+run
+    flutter -t lib/weather_main.dart 
+
+to run a different dart target
 
 attributions: 
     - mostly-cloudy-icon-4.jpg: https://icon-library.com/icon/mostly-cloudy-icon-4.html
