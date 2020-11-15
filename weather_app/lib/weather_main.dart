@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'my_flutter_app_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -45,20 +44,11 @@ class MyApp extends StatelessWidget {
               color: Colors.blue,
             ),
           ),
-          Image.asset(
-            //https://icon-library.com/icon/mostly-cloudy-icon-4.html
-            'images/mostly-cloudy-icon-4.jpg',
-            width: 48,
-            height: 48,
-            fit: BoxFit.cover,
-          ),
-          /*
           Icon(
-            //https://icon-library.com/icon/mostly-cloudy-icon-4.html
-            MyFlutterApp.mostly_cloudy_icon_4,
-            color: Colors.black,
+            Icons.cloud,
+            color: Colors.grey,
             size: 48,
-          ),*/
+          ),
           Text(
             '41\u2109',
             style: TextStyle(
@@ -114,8 +104,8 @@ class MyApp extends StatelessWidget {
         body: ListView(
           children: [
             Image.asset(
-              //https://www.rochester.edu/
-              'images/2018-09-28_aerial_photo_407.jpg',
+              //https://unsplash.com/photos/4jjSan_VD8k
+              'images/dayne-topkin-4jjSan_VD8k-unsplash.jpg',
               width: 600,
               height: 200,
               fit: BoxFit.cover,

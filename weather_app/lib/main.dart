@@ -18,6 +18,13 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
+            Image.asset(
+              //https://unsplash.com/photos/4jjSan_VD8k
+              'images/dayne-topkin-4jjSan_VD8k-unsplash.jpg',
+              width: 600,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
             Padding(
               padding: EdgeInsets.only(top: 10, bottom: 20),
               child: Text(
