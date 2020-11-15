@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
 ```
 Now when you run main.dart, the App should only display a single static page with only an AppBar with the title "Displayed Title".
 
-<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Scaffold%20Widget.png" alt="a single static page with only an AppBar with the title 'Displayed Title'" width="40%">
+<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Scaffold%20Widget.png" alt="a single static page with only an AppBar with the title 'Displayed Title'" width="30%">
 
 ## Basic Stateless Widgets
 
@@ -76,7 +76,7 @@ Scaffold(
 ```
 Now when you run main.dart, the App will display a single static page with an AppBar and grey text right below at the top left corner saying "New York, US".
 
-<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Basic%20Stateless%20Widget-1.png" alt="a single static page with an AppBar and grey text right below at the top left corner saying 'New York, US'" width="40%">
+<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Basic%20Stateless%20Widget-1.png" alt="a single static page with an AppBar and grey text right below at the top left corner saying 'New York, US'" width="30%">
 
 ### Images and Managing Assets
 
@@ -118,7 +118,7 @@ body: Image.asset(
 You might have to fully reload the entire application since you updated the "pubspec.yaml" file.
 Now when you run main.dart, the App will display a single static page with an AppBar and a beautiful, mostly clear night sky.
 
-<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Basic%20Stateless%20Widget-2.png" alt="a single static page with an AppBar and a beautiful, mostly clear night sky" width="40%">
+<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Basic%20Stateless%20Widget-2.png" alt="a single static page with an AppBar and a beautiful, mostly clear night sky" width="30%">
 
 ## Layout Widgets
 
@@ -195,7 +195,7 @@ body: Column(
 
 Now when you run main.dart, the App will display a single static page with an AppBar with a beautiful, mostly clear night sky. Below that is bold text saying "Rochester" text. And beneath that is smaller grey text saying "New York, US". The page is also centered, because the Column defaults it's children to the center.
 
-<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Layout%20Widgets.png" alt="a single static page with an AppBar with a beautiful, mostly clear night sky. Below that is bold text saying 'Rochester' text. And beneath that is smaller grey text saying 'New York, US'. The page is also centered, because the Column defaults it's children to the center" width="40%">
+<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Layout%20Widgets.png" alt="a single static page with an AppBar with a beautiful, mostly clear night sky. Below that is bold text saying 'Rochester' text. And beneath that is smaller grey text saying 'New York, US'. The page is also centered, because the Column defaults it's children to the center" width="30%">
 
 ## Defining Widgets Inside build
 
@@ -226,7 +226,7 @@ body: Column(
 
 Now when you run main.dart, the App will display a single static page with an AppBar and 3 other lines of text below the AppBar.
 
-<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Final%20Layout.png" alt="a single static page with an AppBar and 3 other lines of text below the AppBar" width="40%">
+<img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Final%20Layout.png" alt="a single static page with an AppBar and 3 other lines of text below the AppBar" width="30%">
 
 The full code of main.dart right now is:
 ```
