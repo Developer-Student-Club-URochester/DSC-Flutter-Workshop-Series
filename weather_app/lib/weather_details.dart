@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(WeatherDetails(
+    data: "Rochester",
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class WeatherDetails extends StatelessWidget {
+  final String data;
+  WeatherDetails({
+    Key key,
+    @required this.data,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Widget rochesterText = Text(
@@ -98,9 +105,6 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text('Tuesday November 10th'),
-        ),
         body: ListView(
           children: [
             Image.asset(
@@ -109,6 +113,18 @@ class MyApp extends StatelessWidget {
               width: 600,
               height: 200,
               fit: BoxFit.cover,
+            ),
+            Container(
+              padding: const EdgeInsets.only(left: 10, top: 12),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Tuesday, Nov. 10th",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue[500],
+                ),
+              ),
             ),
             locationWeatherSection,
             textSection,
