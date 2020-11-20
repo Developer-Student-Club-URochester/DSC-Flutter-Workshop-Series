@@ -1,4 +1,4 @@
-# DSC-Flutter-Workshop-Series-1
+# DSC-Flutter-Workshop-Series-2
 
 ## Basic Flutter Structure
 
