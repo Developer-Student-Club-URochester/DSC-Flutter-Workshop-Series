@@ -1,4 +1,4 @@
-# DSC-Flutter-Workshop-Series-1
+# DSC-Flutter-Workshop-Series-2
 
 ## Basic Flutter Structure
 
@@ -282,9 +282,9 @@ class MyApp extends StatelessWidget {
 }
 ```
 Using these few Widgets, you can create beautiful static pages for your app!
-You can check out the weather_main.dart for an example.
+You can check out the weather_details.dart for an example.
 To run a different dart file from the command line, run
-```flutter -t lib/[local path to dart file]```
+```flutter run -t lib/[local path to dart file]```
 
-For our weather_main.dart, run 
-```flutter -t lib/weather_main.dart```
+For our weather_details.dart, run 
+```flutter run -t lib/weather_details.dart```
