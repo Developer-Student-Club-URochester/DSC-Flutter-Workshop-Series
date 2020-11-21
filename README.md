@@ -284,7 +284,7 @@ class MyApp extends StatelessWidget {
 Using these few Widgets, you can create beautiful static pages for your app!
 You can check out the weather_main.dart for an example.
 To run a different dart file from the command line, run
-```flutter -t lib/[local path to dart file]```
+```flutter run -t lib/[local path to dart file]```
 
 For our weather_main.dart, run 
-```flutter -t lib/weather_main.dart```
+```flutter run -t lib/weather_main.dart```
