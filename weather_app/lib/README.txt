@@ -1,5 +1,5 @@
 run
-    flutter -t lib/weather_main.dart 
+    flutter run -t lib/weather_main.dart 
 
 to run a different dart target
 
