@@ -1,9 +1,12 @@
 # DSC-Flutter-Workshop-Series
 
 Project code for each workshop are handled in different branches. To see other projects for each workshop, move to a different branch.
+
 See the top: 
+
 ![top](https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/main/install-guide-images/gitbranch-1.png)
 Click main: 
+
 ![expand](https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/main/install-guide-images/gitbranch-2.png)
 
 
