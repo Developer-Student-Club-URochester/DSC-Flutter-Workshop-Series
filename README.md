@@ -9,6 +9,7 @@ Click main:
 
 ![expand](https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/main/install-guide-images/gitbranch-2.png)
 
+Switch branches.
 
 ## **<span style="text-decoration:underline;">Flutter Installation Guide</span>**
 
