@@ -1,5 +1,10 @@
 # DSC-Flutter-Workshop-Series
 
+Project code for each workshop are handled in different branches. To see other projects for each workshop, move to a different branch.
+![top](https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/main/install-guide-images/gitbranch-1.png)
+![expand](https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/main/install-guide-images/gitbranch-2.png)
+
+
 ## **<span style="text-decoration:underline;">Flutter Installation Guide</span>**
 
 [Installation Guide](https://docs.google.com/document/d/12AzryX11YazzTNcqQe6Dk4pxRP7GqzPINY_4wUU1fIY/edit?usp=sharing)
