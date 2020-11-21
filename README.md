@@ -390,8 +390,8 @@ In general:
 
 1. Determine the directory where you placed the Flutter SDK. You need this in Step 3.
 2.  Determine which shell you are using and which &lt;rc file> to edit. Typing ```echo $SHELL``` in your Terminal tells you which shell you’re using.
-    *   If you’re using Bash, edit $HOME/.bash_profile or $HOME/.bashrc.
-    *   If you’re using Z shell, edit $HOME/.zshrc.
+    *   If you’re using Bash, edit ```$HOME/.bash_profile``` or ```$HOME/.bashrc```(it depends on your system).
+    *   If you’re using Z shell, edit ```$HOME/.zshrc``` or another possibility is ```$Home/.zprofile``` (it depends on your system).
     *   If you’re using a different shell, the file path and filename will be different on your machine.
 3. Add the following line to be the path where you cloned Flutter’s git repo:
 
