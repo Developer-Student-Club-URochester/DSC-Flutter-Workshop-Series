@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:international_system_of_units/international_system_of_units.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/locale.dart';
 
 class CurrentWeather {
   final Coords coord;
@@ -112,7 +114,7 @@ class Main {
       this.pressure,
       this.humidity});
 
-  double toFahrenheit() {
+  double tempToFahrenheit() {
     return this.temp.toFahrenheit;
   }
 
@@ -158,6 +160,10 @@ class Sys {
   final int sunrise;
   final int sunset;
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
+  DateTime sunriseDate() {
+    return DateTime.fromMillisecondsSinceEpoch(this.sunrise);
+  }
+
   factory Sys.fromJson(Map<String, dynamic> json) {
     return Sys(
       type: json['type'],
