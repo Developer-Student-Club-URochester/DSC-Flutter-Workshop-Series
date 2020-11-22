@@ -3,8 +3,6 @@ import 'DataModels/CurrentWeatherCall.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
-
 Future<CurrentWeather> fetchOneCallWeather() async {
   final response = await http.get(
       'https://api.openweathermap.org/data/2.5/weather?q=Rochester,us&APPID=d79179cc0d90b45eb7725a8eacc0ec8c');
@@ -19,8 +17,6 @@ Future<CurrentWeather> fetchOneCallWeather() async {
     throw Exception('Failed to load weather');
   }
 }
-
-
 
 void main() {
   runApp(WeatherDetails(
@@ -39,18 +35,18 @@ class WeatherDetails extends StatelessWidget {
     CurrentWeather currentWeather;
     Future<CurrentWeather> futureOneCallWeather;
     FutureBuilder<CurrentWeather>(
-            future: futureOneCallWeather,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
+      future: futureOneCallWeather,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
           currentWeather = snapshot.data;
-           } else if (snapshot.hasError) {
+        } else if (snapshot.hasError) {
           currentWeather = null;
-           }
+        }
 
         // By default, show a loading spinner.
-          return CircularProgressIndicator();
-            },
-          );
+        return CircularProgressIndicator();
+      },
+    );
     Widget rochesterText = Text(
       'Rochester',
       style: TextStyle(
@@ -129,12 +125,8 @@ class WeatherDetails extends StatelessWidget {
     );
 
     Widget textSection = Container(
-      padding: const EdgeInsets.only(left: 32, top: 8, right: 32, bottom: 16),
-      child:
-
-      
-
-    );
+        padding: const EdgeInsets.only(left: 32, top: 8, right: 32, bottom: 16),
+        child: Text(''));
 
     return MaterialApp(
       title: 'Flutter Weather App',

@@ -9,7 +9,7 @@ class CurrentWeather {
   final Coords coord;
   final WeatherList weather;
   final String base;
-  Main main;
+  final Main main;
   final num visibility;
   final Wind wind;
   final Clouds clouds;
@@ -34,6 +34,11 @@ class CurrentWeather {
       this.id,
       this.name,
       this.cod});
+
+  String lastUpdated() {
+    DateTime now = DateTime.fromMillisecondsSinceEpoch(dt * 1000);
+    return DateFormat('MMMMEEEEd').format(now);
+  }
 
   factory CurrentWeather.fromJson(Map<String, dynamic> parsedJson) {
     return CurrentWeather(
@@ -89,6 +94,10 @@ class Weather {
 
   Weather({this.id, this.main, this.description, this.icon});
 
+  String iconUrl() {
+    return "http://openweathermap.org/img/w/" + this.icon + ".png";
+  }
+
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
       id: json['id'],
@@ -100,7 +109,7 @@ class Weather {
 }
 
 class Main {
-  double temp;
+  final double temp;
   final double feelsLike;
   final double tempMin;
   final double tempMax;

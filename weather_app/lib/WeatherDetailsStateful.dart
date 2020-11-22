@@ -29,8 +29,6 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-
-
 class _MyAppState extends State<MyApp> {
   Future<CurrentWeather> futureOneCallWeather;
 
@@ -56,8 +54,10 @@ class _MyAppState extends State<MyApp> {
             future: futureOneCallWeather,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return ListView
-                 // todo
+                return ListView(
+                  children: [],
+                );
+                // todo
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
@@ -70,11 +70,8 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-
-  
-
-
 }
+
 class BodyWidget extends StatelessWidget {
   final CurrentWeather currentWeather;
   BodyWidget({

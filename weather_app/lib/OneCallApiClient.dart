@@ -23,20 +23,24 @@ Future<CurrentWeather> fetchOneCallWeather() async {
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
+  bool isImperial = false;
+
+  MyApp({Key key, isImperial});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyAppState createState() => _MyAppState(isImperial: this.isImperial);
 }
 
 class _MyAppState extends State<MyApp> {
   Future<CurrentWeather> futureOneCallWeather;
-
+  bool isImperial;
   @override
   void initState() {
     super.initState();
     futureOneCallWeather = fetchOneCallWeather();
   }
+
+  _MyAppState({this.isImperial});
 
   @override
   Widget build(BuildContext context) {
@@ -49,32 +53,55 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Fetch Data Example'),
         ),
-        body: Center(
-          child: FutureBuilder<CurrentWeather>(
-            future: futureOneCallWeather,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return BodyWidget(currentWeather: snapshot.data); // todo
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
+        body: Column(
+          children: [
+            FutureBuilder<CurrentWeather>(
+              future: futureOneCallWeather,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return BodyWidget(
+                    currentWeather: snapshot.data,
+                    isImperial: false,
+                  ); // todo
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
 
-              // By default, show a loading spinner.
-              return CircularProgressIndicator();
-            },
-          ),
+                // By default, show a loading spinner.
+                return CircularProgressIndicator();
+              },
+            ),
+            Row(
+              children: [
+                FlatButton(onPressed: null, child: null),
+                FlatButton(onPressed: null, child: null),
+              ],
+            )
+          ],
         ),
       ),
     );
   }
 }
 
-class BodyWidget extends StatelessWidget {
+class BodyWidget extends StatefulWidget {
   final CurrentWeather currentWeather;
+  final bool isImperial; // false not imperial (metric)
+  // true is imperial
   BodyWidget({
     Key key,
     @required this.currentWeather,
+    @required this.isImperial,
   });
+  @override
+  _BodyWidgetState createState() => _BodyWidgetState(
+      currentWeather: this.currentWeather, isImperial: this.isImperial);
+}
+
+class _BodyWidgetState extends State<BodyWidget> {
+  CurrentWeather currentWeather;
+  bool isImperial;
+  _BodyWidgetState({@required this.currentWeather, @required this.isImperial});
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +142,7 @@ class BodyWidget extends StatelessWidget {
               color: Colors.blue,
             ),
           ),
-          Icon(
-            Icons.cloud,
-            color: Colors.grey,
-            size: 48,
-          ),
+          Image.network("http://openweathermap.org/img/w/10d.png"),
           Text(
             '41\u2109',
             style: TextStyle(
