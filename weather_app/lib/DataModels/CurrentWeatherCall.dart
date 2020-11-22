@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:international_system_of_units/international_system_of_units.dart';
 
 class CurrentWeather {
   final Coords coord;
@@ -110,6 +111,10 @@ class Main {
       this.tempMax,
       this.pressure,
       this.humidity});
+
+  double toFahrenheit() {
+    return this.temp.toFahrenheit;
+  }
 
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
