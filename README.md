@@ -80,7 +80,7 @@ Now when you run main.dart, the App will display a single static page with an Ap
 
 <img src="https://raw.githubusercontent.com/Developer-Student-Club-URochester/DSC-Flutter-Workshop-Series/wksp-1/README%20images/Basic%20Stateless%20Widget-1.png" alt="a single static page with an AppBar and grey text right below at the top left corner saying 'New York, US'" width="30%">
 
-### Images and Managing Assets
+### Images and Managing Assets *(Not covered this workshop)*
 
 If you have external assets like pictures or fonts, you have to add them to the "pubspec.yaml" file. The pubpsec.yaml contains metadata about your project, from library dependencies to images. We will mostly just be focusing on adding image assets to the project for now. 
 Directly adding images to the main directory or an image directory will not allow you to use the image. You must also add the image asset to the "pubspec.yaml".
