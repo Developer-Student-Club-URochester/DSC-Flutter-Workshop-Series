@@ -157,8 +157,9 @@ class BodyWidget extends StatelessWidget {
 
     Widget textSection = Container(
       padding: const EdgeInsets.only(left: 32, top: 8, right: 32, bottom: 16),
-      child: Text(
-          'Today: Party cloudy currently. The high will be 81\u2109. Mostly clear tonight with a low of 63\u2109.'),
+      child: Text('Today: Party cloudy currently. The high will be' +
+          currentWeather.main.temp.toString() +
+          ' \u2109. Mostly clear tonight with a low of 63\u2109.'),
     );
     return ListView(
       children: [

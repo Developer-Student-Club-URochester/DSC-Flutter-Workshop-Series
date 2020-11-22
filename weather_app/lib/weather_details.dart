@@ -1,4 +1,26 @@
 import 'package:flutter/material.dart';
+import 'DataModels/CurrentWeatherCall.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+
+
+Future<CurrentWeather> fetchOneCallWeather() async {
+  final response = await http.get(
+      'https://api.openweathermap.org/data/2.5/weather?q=Rochester,us&APPID=d79179cc0d90b45eb7725a8eacc0ec8c');
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return CurrentWeather.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load weather');
+  }
+}
+
+
 
 void main() {
   runApp(WeatherDetails(
@@ -14,6 +36,21 @@ class WeatherDetails extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    CurrentWeather currentWeather;
+    Future<CurrentWeather> futureOneCallWeather;
+    FutureBuilder<CurrentWeather>(
+            future: futureOneCallWeather,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+          currentWeather = snapshot.data;
+           } else if (snapshot.hasError) {
+          currentWeather = null;
+           }
+
+        // By default, show a loading spinner.
+          return CircularProgressIndicator();
+            },
+          );
     Widget rochesterText = Text(
       'Rochester',
       style: TextStyle(
@@ -93,8 +130,10 @@ class WeatherDetails extends StatelessWidget {
 
     Widget textSection = Container(
       padding: const EdgeInsets.only(left: 32, top: 8, right: 32, bottom: 16),
-      child: Text(
-          'Today: Party cloudy currently. The high will be 81\u2109. Mostly clear tonight with a low of 63\u2109.'),
+      child:
+
+      
+
     );
 
     return MaterialApp(
@@ -118,7 +157,7 @@ class WeatherDetails extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10, top: 12),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Tuesday, Nov. 10th",
+                "Sunday, Nov. 22nd",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

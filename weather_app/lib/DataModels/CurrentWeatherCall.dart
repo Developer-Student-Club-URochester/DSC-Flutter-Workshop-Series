@@ -6,7 +6,7 @@ class CurrentWeather {
   final Coords coord;
   final WeatherList weather;
   final String base;
-  final Main main;
+  Main main;
   final num visibility;
   final Wind wind;
   final Clouds clouds;
@@ -97,7 +97,7 @@ class Weather {
 }
 
 class Main {
-  final double temp;
+  double temp;
   final double feelsLike;
   final double tempMin;
   final double tempMax;
