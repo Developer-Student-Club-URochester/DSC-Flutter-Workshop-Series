@@ -1,9 +1,7 @@
 import 'dart:ffi';
 
-import 'package:flutter/material.dart';
 import 'package:international_system_of_units/international_system_of_units.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/locale.dart';
 
 class CurrentWeather {
   final Coords coord;
@@ -37,7 +35,7 @@ class CurrentWeather {
 
   String lastUpdated() {
     DateTime now = DateTime.fromMillisecondsSinceEpoch(dt * 1000);
-    return DateFormat('MMMMEEEEd').format(now);
+    return DateFormat('EEE, MMM d').add_jm().format(now);
   }
 
   factory CurrentWeather.fromJson(Map<String, dynamic> parsedJson) {
@@ -123,8 +121,39 @@ class Main {
       this.pressure,
       this.humidity});
 
-  double tempToFahrenheit() {
-    return this.temp.toFahrenheit;
+  String tempString(bool isImperial) {
+    if (isImperial)
+      return this.temp.toFahrenheit.toStringAsFixed(1) + " \u2109";
+    else
+      return this.temp.toCelsius.toStringAsFixed(1) + " \u2103";
+  }
+
+  String feelsLikeString(bool isImperial) {
+    if (isImperial)
+      return this.feelsLike.toFahrenheit.toStringAsFixed(1) + " \u2109";
+    else
+      return this.feelsLike.toCelsius.toStringAsFixed(1) + " \u2103";
+  }
+
+  String tempMinString(bool isImperial) {
+    if (isImperial)
+      return this.tempMin.toFahrenheit.toStringAsFixed(1) + " \u2109";
+    else
+      return this.tempMin.toCelsius.toStringAsFixed(1) + " \u2103";
+  }
+
+  String tempMaxString(bool isImperial) {
+    if (isImperial)
+      return this.tempMax.toFahrenheit.toStringAsFixed(1) + " \u2109";
+    else
+      return this.tempMax.toCelsius.toStringAsFixed(1) + " \u2103";
+  }
+
+  String pressureString(bool isImperial) {
+    if (isImperial)
+      return (this.pressure * 0.0295300).toStringAsFixed(2) + " inHg";
+    else
+      return (this.pressure / 1000).toStringAsFixed(1) + " kPa";
   }
 
   factory Main.fromJson(Map<String, dynamic> json) {
@@ -144,6 +173,26 @@ class Wind {
   final int deg;
   Wind({this.speed, this.deg});
 
+  String speedString(bool isImperial) {
+    if (isImperial)
+      return this.speed.toKilometerPerHour.toMilePerHour.toStringAsFixed(1) +
+          "  mph";
+    else
+      return this.speed.toStringAsFixed(1) + " m/s";
+  }
+
+  String degDirectionString() {
+    List<String> directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    int count = 0;
+    for (double i = -22.5; i < 337.5; i += 45) {
+      if (i <= this.deg && this.deg <= i + 45) {
+        return directions[count];
+      }
+      count++;
+    }
+    return 'n/a';
+  }
+
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
       speed: json['speed'],
@@ -155,6 +204,10 @@ class Wind {
 class Clouds {
   final int all; //Cloudiness, %
   Clouds({this.all});
+  String cloudsString() {
+    return all.toString() + " %";
+  }
+
   factory Clouds.fromJson(Map<String, dynamic> json) {
     return Clouds(
       all: json['all'],
@@ -169,8 +222,15 @@ class Sys {
   final int sunrise;
   final int sunset;
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
-  DateTime sunriseDate() {
-    return DateTime.fromMillisecondsSinceEpoch(this.sunrise);
+
+  String sunriseDate() {
+    DateTime now = DateTime.fromMillisecondsSinceEpoch(this.sunrise * 1000);
+    return DateFormat.jm().format(now);
+  }
+
+  String sunsetDate() {
+    DateTime now = DateTime.fromMillisecondsSinceEpoch(this.sunset * 1000);
+    return DateFormat.jm().format(now);
   }
 
   factory Sys.fromJson(Map<String, dynamic> json) {
