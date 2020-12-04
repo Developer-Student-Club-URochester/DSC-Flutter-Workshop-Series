@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:international_system_of_units/international_system_of_units.dart';
 import 'package:intl/intl.dart';
 
@@ -11,6 +9,8 @@ class CurrentWeather {
   final num visibility;
   final Wind wind;
   final Clouds clouds;
+  final Rain rain;
+  final Snow snow;
   final num dt;
   final Sys sys;
   final num timezone;
@@ -26,6 +26,8 @@ class CurrentWeather {
       this.visibility,
       this.wind,
       this.clouds,
+      this.rain,
+      this.snow,
       this.dt,
       this.sys,
       this.timezone,
@@ -38,6 +40,19 @@ class CurrentWeather {
     return DateFormat('EEE, MMM d').add_jm().format(now);
   }
 
+  String visibilityString(bool isImperial) {
+    if (isImperial)
+      return this
+              .visibility
+              .toMeter(LengthUnit.meter)
+              .toMile
+              .toStringAsFixed(1) +
+          " mi";
+    else
+      return this.visibility.toMeter(LengthUnit.meter).toStringAsFixed(0) +
+          " m";
+  }
+
   factory CurrentWeather.fromJson(Map<String, dynamic> parsedJson) {
     return CurrentWeather(
       coord: Coords.fromJson(parsedJson['coord']),
@@ -47,6 +62,11 @@ class CurrentWeather {
       visibility: parsedJson['visibility'],
       wind: Wind.fromJson(parsedJson['wind']),
       clouds: Clouds.fromJson(parsedJson['clouds']),
+      // rain and snow are dynamic and could sometimes not be obtain
+      rain:
+          parsedJson['rain'] != null ? Rain.fromJson(parsedJson['rain']) : null,
+      snow:
+          parsedJson['sonw'] != null ? Snow.fromJson(parsedJson['snow']) : null,
       dt: parsedJson['dt'],
       sys: Sys.fromJson(parsedJson['sys']),
       timezone: parsedJson['timezone'],
@@ -65,8 +85,8 @@ class Coords {
 
   factory Coords.fromJson(Map<String, dynamic> json) {
     return Coords(
-      lon: json['lon'],
-      lat: json['lat'],
+      lon: json['lon'] + .0,
+      lat: json['lat'] + .0,
     );
   }
 }
@@ -113,6 +133,7 @@ class Main {
   final double tempMax;
   final int pressure;
   final int humidity;
+
   Main(
       {this.temp,
       this.feelsLike,
@@ -156,12 +177,16 @@ class Main {
       return (this.pressure / 1000).toStringAsFixed(1) + " kPa";
   }
 
+  String humidityString() {
+    return this.humidity.toString() + " %";
+  }
+
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
-      temp: json['temp'],
-      feelsLike: json['feels_like'],
-      tempMin: json['temp_min'],
-      tempMax: json['temp_max'],
+      temp: json['temp'] + .0,
+      feelsLike: json['feels_like'] + .0,
+      tempMin: json['temp_min'] + .0,
+      tempMax: json['temp_max'] + .0,
       pressure: json['pressure'],
       humidity: json['humidity'],
     );
@@ -195,7 +220,7 @@ class Wind {
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: json['speed'],
+      speed: json['speed'] + .0,
       deg: json['deg'],
     );
   }
@@ -204,6 +229,7 @@ class Wind {
 class Clouds {
   final int all; //Cloudiness, %
   Clouds({this.all});
+
   String cloudsString() {
     return all.toString() + " %";
   }
@@ -215,12 +241,79 @@ class Clouds {
   }
 }
 
+class Rain {
+  final double oneHour;
+  final double threeHour;
+  Rain({this.oneHour, this.threeHour});
+
+  String oneHourString(bool isImperial) {
+    if (this.oneHour == null) {
+      return "n/a";
+    }
+    if (isImperial)
+      return (this.oneHour / 1000).toInch.toStringAsFixed(2) + " in";
+    else
+      return this.oneHour.toStringAsFixed(2) + " mm";
+  }
+
+  String threeHourString(bool isImperial) {
+    if (this.threeHour == null) {
+      return "n/a";
+    }
+    if (isImperial)
+      return (this.threeHour / 1000).toInch.toStringAsFixed(3) + " in";
+    else
+      return this.threeHour.toStringAsFixed(2) + " mm";
+  }
+
+  factory Rain.fromJson(Map<String, dynamic> json) {
+    return Rain(
+      oneHour: json['1h'] != null ? json['1h'] + .0 : null,
+      threeHour: json['3h'] != null ? json['3h'] + .0 : null,
+    );
+  }
+}
+
+class Snow {
+  final double oneHour;
+  final double threeHour;
+  Snow({this.oneHour, this.threeHour});
+
+  String oneHourString(bool isImperial) {
+    if (this.oneHour == null) {
+      return "n/a";
+    }
+    if (isImperial)
+      return (this.oneHour / 1000).toInch.toStringAsFixed(2) + " in";
+    else
+      return this.oneHour.toStringAsFixed(2) + " mm";
+  }
+
+  String threeHourString(bool isImperial) {
+    if (this.threeHour == null) {
+      return "n/a";
+    }
+    if (isImperial)
+      return (this.threeHour / 1000).toInch.toStringAsFixed(2) + " in";
+    else
+      return this.threeHour.toStringAsFixed(2) + " mm";
+  }
+
+  factory Snow.fromJson(Map<String, dynamic> json) {
+    return Snow(
+      oneHour: json['1h'] != null ? json['1h'] + .0 : null,
+      threeHour: json['3h'] != null ? json['3h'] + .0 : null,
+    );
+  }
+}
+
 class Sys {
   final int type;
   final int id;
   final String country;
   final int sunrise;
   final int sunset;
+
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
 
   String sunriseDate() {

@@ -112,7 +112,7 @@ class HomeSearchScreen extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return WeatherDetails(data: 'Rochester');
+                      return WeatherDetails(city: 'Rochester');
                     },
                   ),
                 );
