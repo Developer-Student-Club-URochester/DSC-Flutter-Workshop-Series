@@ -85,8 +85,8 @@ class Coords {
 
   factory Coords.fromJson(Map<String, dynamic> json) {
     return Coords(
-      lon: json['lon'],
-      lat: json['lat'],
+      lon: json['lon'] + .0,
+      lat: json['lat'] + .0,
     );
   }
 }
@@ -183,10 +183,10 @@ class Main {
 
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
-      temp: json['temp'],
-      feelsLike: json['feels_like'],
-      tempMin: json['temp_min'],
-      tempMax: json['temp_max'],
+      temp: json['temp'] + .0,
+      feelsLike: json['feels_like'] + .0,
+      tempMin: json['temp_min'] + .0,
+      tempMax: json['temp_max'] + .0,
       pressure: json['pressure'],
       humidity: json['humidity'],
     );
@@ -220,7 +220,7 @@ class Wind {
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: json['speed'],
+      speed: json['speed'] + .0,
       deg: json['deg'],
     );
   }
@@ -268,8 +268,8 @@ class Rain {
 
   factory Rain.fromJson(Map<String, dynamic> json) {
     return Rain(
-      oneHour: json['1h'] != null ? json['1h'] : null,
-      threeHour: json['3h'] != null ? json['3h'] : null,
+      oneHour: json['1h'] != null ? json['1h'] + .0 : null,
+      threeHour: json['3h'] != null ? json['3h'] + .0 : null,
     );
   }
 }
@@ -301,8 +301,8 @@ class Snow {
 
   factory Snow.fromJson(Map<String, dynamic> json) {
     return Snow(
-      oneHour: json['1h'] != null ? json['1h'] : null,
-      threeHour: json['3h'] != null ? json['3h'] : null,
+      oneHour: json['1h'] != null ? json['1h'] + .0 : null,
+      threeHour: json['3h'] != null ? json['3h'] + .0 : null,
     );
   }
 }

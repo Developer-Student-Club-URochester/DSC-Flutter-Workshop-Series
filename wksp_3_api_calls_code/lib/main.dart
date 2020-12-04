@@ -154,8 +154,12 @@ class _BodyWidgetState extends State<BodyWidget> {
                 SizedBox(height: 30),
                 Text(currentWeather.sys.sunriseDate()),
                 Text(currentWeather.sys.sunsetDate()),
-                Text(currentWeather.rain.oneHourString(_isImperial)),
-                Text(currentWeather.rain.threeHourString(_isImperial)),
+                Text(currentWeather.rain != null
+                    ? currentWeather.rain.oneHourString(_isImperial)
+                    : "n/a"),
+                Text(currentWeather.rain != null
+                    ? currentWeather.rain.threeHourString(_isImperial)
+                    : "n/a"),
                 Text(currentWeather.main.pressureString(_isImperial)),
                 Text(currentWeather.wind.speedString(_isImperial)),
                 Text(currentWeather.wind.degDirectionString()),
